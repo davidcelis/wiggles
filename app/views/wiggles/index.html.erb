@@ -7,7 +7,6 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -16,21 +15,14 @@
       <tr>
         <td><%= link_to wiggle.id, wiggle_path(wiggle) %></td>
         <td><%= wiggle.name %></td>
-        <td><%=l wiggle.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_wiggle_path(wiggle), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      wiggle_path(wiggle),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <div class="btn-group">
+            <%=raw action_buttons(wiggle) %>
+          </div>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_wiggle_path,
-            :class => 'btn btn-primary' %>
+<%= paginate @wiggles, :theme => 'twitter-bootstrap', :pagination_class => "pagination-small pagination-centered" %>

@@ -44,6 +44,10 @@ gem 'puma'
 # Use recommendable for collaborative filtering
 gem 'recommendable'
 
+# Pagination
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-coolline'

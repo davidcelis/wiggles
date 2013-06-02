@@ -6,3 +6,12 @@
   =require twitter-bootstrap-static/fontawesome
   */
 
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.like-button, .dislike-button {
+  width: 77px !important;
+  text-align: left;
+}

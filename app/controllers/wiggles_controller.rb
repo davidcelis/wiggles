@@ -4,7 +4,7 @@ class WigglesController < ApplicationController
   # GET /wiggles
   # GET /wiggles.json
   def index
-    @wiggles = Wiggle.all
+    @wiggles = Wiggle.order(:name).page(params[:page])
   end
 
   # GET /wiggles/1
@@ -63,8 +63,8 @@ class WigglesController < ApplicationController
 
   # POST /wiggles/1/{like,dislike,bookmark,hide}
   # DELETE /wiggles/1/{like,dislike,bookmark,hide}
-  %[like unlike dislike undislike bookmark unbookmark hide unhide].each do |m|
-    define m do
+  %w[like unlike dislike undislike bookmark unbookmark hide unhide].each do |m|
+    define_method m do
       current_user.send(m, @wiggle)
     end
   end
