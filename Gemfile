@@ -26,6 +26,7 @@ gem 'twitter-bootstrap-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
@@ -51,4 +52,7 @@ gem 'bootstrap-kaminari-views'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-coolline'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end

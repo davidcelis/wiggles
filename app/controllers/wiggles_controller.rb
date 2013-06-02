@@ -1,5 +1,6 @@
 class WigglesController < ApplicationController
-  before_action :set_wiggle, only: [:show, :edit, :update, :destroy]
+  RECOMMENDABLE_ACTIONS = %w[like unlike dislike undislike bookmark unbookmark hide unhide]
+  before_action :set_wiggle, only: [:show, :edit, :update, :destroy] + RECOMMENDABLE_ACTIONS
 
   # GET /wiggles
   # GET /wiggles.json
@@ -63,9 +64,13 @@ class WigglesController < ApplicationController
 
   # POST /wiggles/1/{like,dislike,bookmark,hide}
   # DELETE /wiggles/1/{like,dislike,bookmark,hide}
-  %w[like unlike dislike undislike bookmark unbookmark hide unhide].each do |m|
+  RECOMMENDABLE_ACTIONS.each do |m|
     define_method m do
-      current_user.send(m, @wiggle)
+      if current_user.send(m, @wiggle)
+        head :ok
+      else
+        head :unprocessable_entity
+      end
     end
   end
 
