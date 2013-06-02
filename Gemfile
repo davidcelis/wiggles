@@ -41,6 +41,9 @@ gem 'devise', '3.0.0.rc'
 # Use puma as the app server
 gem 'puma'
 
+# Use recommendable for collaborative filtering
+gem 'recommendable'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-coolline'

@@ -61,6 +61,14 @@ class WigglesController < ApplicationController
     end
   end
 
+  # POST /wiggles/1/{like,dislike,bookmark,hide}
+  # DELETE /wiggles/1/{like,dislike,bookmark,hide}
+  %[like unlike dislike undislike bookmark unbookmark hide unhide].each do |m|
+    define m do
+      current_user.send(m, @wiggle)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiggle
