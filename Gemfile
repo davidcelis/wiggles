@@ -36,7 +36,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# Use ActiveModel has_secure_password
+# Use ActiveModel has_secure_password lol jk
 gem 'devise', '3.0.0.rc'
 
 # Use puma as the app server
