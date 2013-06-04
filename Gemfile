@@ -24,7 +24,7 @@ gem 'jquery-rails'
 # Use Twitter Bootstrap for styling
 gem 'twitter-bootstrap-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# Oh jeez
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 

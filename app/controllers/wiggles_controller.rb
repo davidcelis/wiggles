@@ -5,7 +5,7 @@ class WigglesController < ApplicationController
   # GET /wiggles
   # GET /wiggles.json
   def index
-    @wiggles = Wiggle.order(:name).page(params[:page])
+    @wiggles = Wiggle.page(params[:page])
   end
 
   # GET /wiggles/recommended
