@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -13,16 +12,22 @@
   <tbody>
     <% @wiggles.each do |wiggle| %>
       <tr>
-        <td><%= link_to wiggle.id, wiggle_path(wiggle) %></td>
         <td><%= wiggle.name %></td>
         <td class="wiggle-actions">
-          <div class="btn-group">
-            <%=raw action_buttons(wiggle) %>
-          </div>
+          <% if user_signed_in? %>
+            <div class="btn-group">
+              <%=raw action_buttons(wiggle) %>
+            </div>
+          <% else %>
+            This is where we'd let you rate a wiggle, if you were
+            <%= link_to 'signed in', new_user_session_path %>
+          <% end %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= paginate @wiggles, :theme => 'twitter-bootstrap', :pagination_class => "pagination-small pagination-centered" %>
+<% unless params[:action] == 'recommended' %>
+  <%= paginate @wiggles, :theme => 'twitter-bootstrap', :pagination_class => "pagination-small pagination-centered" %>
+<% end %>

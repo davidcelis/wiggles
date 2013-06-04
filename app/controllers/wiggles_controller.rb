@@ -8,6 +8,27 @@ class WigglesController < ApplicationController
     @wiggles = Wiggle.order(:name).page(params[:page])
   end
 
+  # GET /wiggles/recommended
+  # GET /wiggles/recommended.json
+  def recommended
+    @wiggles = current_user.recommended_wiggles
+    render :index
+  end
+
+  # GET /wiggles/liked
+  # GET /wiggles/liked.json
+  def liked
+    @wiggles = current_user.liked_wiggles.page(params[:page])
+    render :index
+  end
+
+  # GET /wiggles/disliked
+  # GET /wiggles/disliked.json
+  def disliked
+    @wiggles = current_user.disliked_wiggles.page(params[:page])
+    render :index
+  end
+
   # GET /wiggles/1
   # GET /wiggles/1.json
   def show

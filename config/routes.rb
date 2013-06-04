@@ -13,5 +13,11 @@ Wiggles::Application.routes.draw do
       post   :hide
       delete :hide,     action: :unhide
     end
+
+    collection do
+      get :recommended
+      get :liked
+      get :disliked
+    end
   end
 end
