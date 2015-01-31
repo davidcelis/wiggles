@@ -1,0 +1,22 @@
+<h1>Listing wiggles</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Checksum</th>
+  </tr>
+
+<% @wiggles.each do |wiggle| %>
+  <tr>
+    <td><%=h wiggle.name %></td>
+    <td><%=h wiggle.checksum %></td>
+    <td><%= link_to 'Show', wiggle %></td>
+    <td><%= link_to 'Edit', edit_wiggle_path(wiggle) %></td>
+    <td><%= link_to 'Destroy', wiggle, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New wiggle', new_wiggle_path %>

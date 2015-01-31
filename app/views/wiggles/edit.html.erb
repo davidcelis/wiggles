@@ -1,0 +1,20 @@
+<h1>Editing wiggle</h1>
+
+<% form_for(@wiggle) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :checksum %><br />
+    <%= f.text_field :checksum %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @wiggle %> |
+<%= link_to 'Back', wiggles_path %>

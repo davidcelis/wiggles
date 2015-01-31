@@ -1,0 +1,20 @@
+<h1>These Wiggles failed their checksum validation!!!</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Bad Checksum</th>
+    <th>Good Checksum</th>
+  </tr>
+
+<% @wiggles.each do |wiggle| %>
+  <tr>
+    <td><%=h wiggle.name %></td>
+    <td><%=h wiggle.checksum %></td>
+    <td><%=h WiggleChecksummer.new(wiggle).calculate_checksum! %></td>
+    <td><%= link_to 'Show', wiggle %></td>
+    <td><%= link_to 'Edit', edit_wiggle_path(wiggle) %></td>
+    <td><%= link_to 'Destroy', wiggle, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
