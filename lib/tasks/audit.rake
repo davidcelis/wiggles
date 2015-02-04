@@ -9,4 +9,18 @@ namespace :audit do
       end
     end
   end
+
+  task :passwords_benchmark => :environment do
+    require 'benchmark'
+
+    characters = PasswordCharacters.new(User::PASSWORD_CHARACTERS)
+
+    Benchmark.bm do |x|
+      x.report("password_audit") do
+        User.all.each do |user|
+          characters.allowed?(user.password)
+        end
+      end
+    end
+  end
 end
